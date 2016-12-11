@@ -14,10 +14,21 @@ export
 
 abstract Bound
 
-POMDPs.@pomdp_func upper_bound{B}(bound::Bound, prob::Union{POMDP,MDP}, b::B)
-POMDPs.@pomdp_func lower_bound{B}(bound::Bound, prob::Union{POMDP,MDP}, b::B)
+"""
+    upper_bound(bound::Bound, prob::Union{POMDP,MDP}, b)
 
-POMDPs.@pomdp_func initial_upper_bound(bound::Bound, prob::Union{POMDP,MDP})
-POMDPs.@pomdp_func initial_lower_bound(bound::Bound, prob::Union{POMDP,MDP})
+Provide an upper bound on the value function for belief or state b.
+"""
+function upper_bound end
+
+"""
+    lower_bound{B}(bound::Bound, prob::Union{POMDP,MDP}, b::B)
+
+Provide a lower bound on the value function for belief or state b.
+"""
+function lower_bound end
+
+initial_upper_bound(bound::Bound, prob::Union{POMDP,MDP}) = nothing
+initial_lower_bound(bound::Bound, prob::Union{POMDP,MDP}) = nothing
 
 end # module
